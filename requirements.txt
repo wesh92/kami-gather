@@ -1,0 +1,7 @@
+black==23.1.0
+pre-commit==3.1.1
+ruff==0.0.254
+streamlit==1.20.0
+pydantic==1.10.4
+pymongo==3.13.0
+apache-airflow==2.5.2
