@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  pg-data:
+    image: postgres:15.2
+    container_name: postgres_data
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/postgres_data:/var/lib/postgresql/data
+
+  pg-service:
+    image: postgres:15.2
+    container_name: postgres_service
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./db/postgres_service:/var/lib/postgresql/data
+
+volumes:
+  postgres_data1:
+  postgres_data2:

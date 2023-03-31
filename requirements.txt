@@ -3,6 +3,8 @@ pre-commit==3.1.1
 ruff==0.0.254
 streamlit==1.20.0
 pydantic==1.10.4
-pymongo==3.13.0
-apache-airflow==2.5.2
-apache-airflow-providers-mongo==3.1.1
+asyncpg==0.27.0
+httpx==0.23.3
+psycopg2==2.9.5
+requests==2.28.2
+toml==0.10.2

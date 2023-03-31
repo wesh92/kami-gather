@@ -1,6 +1,8 @@
 import pendulum
+from src.market_init import main as market_init_main
+from src.update_market_cats import main as update_market_cats_main
 
-from airflow.decorators import dag
+from airflow.decorators import dag, task
 from airflow.models import DAG
 from airflow.operators.empty import EmptyOperator
 
@@ -29,8 +31,21 @@ def bdo_market_ingestion() -> DAG:
 
     start = EmptyOperator(task_id='start')
     end = EmptyOperator(task_id='end')
+    
+    @task
+    def run_market_init():
+        import asyncio
+        asyncio.run(market_init_main())
 
-    start >> end
+    @task
+    def run_update_market_cats():
+        update_market_cats_main()
+
+    t1 = run_market_init()
+    t2 = run_update_market_cats()
+    
+
+    start >> t1 >> t2 >> end
 
 
 run_dag = bdo_market_ingestion()

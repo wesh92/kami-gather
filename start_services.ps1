@@ -1,0 +1,1 @@
+Set-Location airflow; astro dev kill; astro dev start; Set-Location .. ; docker compose up -d

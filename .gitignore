@@ -152,4 +152,4 @@ cython_debug/
 #.idea/
 
 *.env
-airflow/db/mongodb_data/**
+db/postgres_*/**
